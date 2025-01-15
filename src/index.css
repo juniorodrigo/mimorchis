@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-pink-100 via-red-50 to-purple-100 min-h-screen;
+  }
+}
+
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 192, 203, 0.6);
+  animation: float 6s ease-in infinite;
+  opacity: 0;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 32px;
+  border-radius: 32px 32px 0 0;
+  background-color: inherit;
+}
+
+.heart::before {
+  transform: rotate(-45deg);
+  transform-origin: 100% 100%;
+}
+
+.heart::after {
+  left: -12px;
+  transform: rotate(45deg);
+  transform-origin: 0 100%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
